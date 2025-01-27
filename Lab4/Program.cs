@@ -1,4 +1,26 @@
-﻿class Order<T>:ICloneable,IComparable
+﻿Order<int>[] mas = new Order<int>[3];
+for (int i = 0; i < mas.Length; i++)
+{
+    Console.Write("Введите р/с плательщика:");
+    int rsp = int.Parse(Console.ReadLine()!);
+    Console.Write("Введите р/с получателя:");
+    int rsd = int.Parse(Console.ReadLine()!);
+    Console.Write("Введите сумму перевода:");
+    decimal summa = decimal.Parse(Console.ReadLine()!);
+    mas[i] = new Order<int>(rsp, rsd, summa);
+}
+Array.Sort(mas);
+foreach (var item in mas)
+{
+    Console.WriteLine(item);
+}
+Console.WriteLine();
+Array.Sort(mas, new SortBySumma());
+foreach (var item in mas)
+{
+    Console.WriteLine(item);
+}
+class Order<T>:ICloneable,IComparable
 {
     public T RSPayment { get; set; }
     public T RSDestination { get; set; }
