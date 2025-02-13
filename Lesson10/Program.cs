@@ -216,30 +216,50 @@ using System.Threading.Channels;
 //Console.WriteLine(fmult(6));
 
 //пример 9. События.
+void DisplayMessage(Account sender,AccountEventArgs e)
+{
+    Console.WriteLine($"Сумма транзакций:{e.Sum}");
+    Console.WriteLine(e.Message);
+    Console.WriteLine($"Текущая сумма на счете:{sender.Sum}");
+}
 Account account = new Account(100);
+account.Notify += DisplayMessage;
 account.Put(20);
 account.Take(70);
+//account.Notify -= DisplayMessage;
 account.Take(180);
+
+class AccountEventArgs
+{
+    public string Message { get; }
+    public int Sum { get; }
+    public AccountEventArgs(string message, int sum)
+    {
+        Message = message;
+        Sum = sum;
+    }
+}
 class Account
 {
-    public delegate void AccountHandler(string mes);
+    public delegate void AccountHandler(Account sender,AccountEventArgs e);
     public event AccountHandler? Notify;
     public int Sum { get; private set; }
     public Account(int sum) => Sum = sum;
     public void Put(int sum) {
         Sum += sum;
-        Notify?.Invoke($"На счет поступило:{sum}");
+        Notify?.Invoke(this, new AccountEventArgs($"На счет поступило:{sum}",sum));
     }
     public void Take(int sum)
     {
         if (Sum >= sum)
         {
             Sum -= sum;
-            Notify?.Invoke($"Cо счета снято:{Sum}");
+            Notify?.Invoke(this,new AccountEventArgs($"Cо счета снято:{Sum}",sum));
         }
         else
         {
-            Notify?.Invoke($"Недостаточно средств. Баланc:{Sum}");
+            Notify?.Invoke(this,new AccountEventArgs($"Недостаточно средств. Баланc:{Sum}",sum));
         }
     }
 }
+
