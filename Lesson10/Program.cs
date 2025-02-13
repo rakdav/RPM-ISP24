@@ -142,44 +142,104 @@ using System.Threading.Channels;
 //delegate void MessageHandler(string message);
 
 //пример 7. Лямбды.Лямбда-выражения представляют упрощенную запись анонимных методов
-Message handler = () => Console.WriteLine("Hello!");
-handler();
-handler();
-Message mes = () =>
-{
-    Console.WriteLine("Hello, world!");
-    Console.WriteLine("Hi!");
-};
-mes();
-Operation sum = (x, y) => Console.WriteLine($"{x}+{y}={x + y}");
-sum(12, 67);
-sum(33, 71);
-ShowMessage print = mes => Console.WriteLine(mes);
-print("Hello");
-print("World");
-var welcome = (string mes) => Console.WriteLine(mes);
-welcome("Hello, world!");
-var summa = (int x, int y) => x + y;
-Console.WriteLine(summa(6,9));
-IntOperation op = (x, y) => x * y;
-Console.WriteLine(op(5,9));
+//Message handler = () => Console.WriteLine("Hello!");
+//handler();
+//handler();
+//Message mes = () =>
+//{
+//    Console.WriteLine("Hello, world!");
+//    Console.WriteLine("Hi!");
+//};
+//mes();
+//Operation sum = (x, y) => Console.WriteLine($"{x}+{y}={x + y}");
+//sum(12, 67);
+//sum(33, 71);
+//ShowMessage print = mes => Console.WriteLine(mes);
+//print("Hello");
+//print("World");
+//var welcome = (string mes) => Console.WriteLine(mes);
+//welcome("Hello, world!");
+//var summa = (int x, int y) => x + y;
+//Console.WriteLine(summa(6,9));
+//IntOperation op = (x, y) => x * y;
+//Console.WriteLine(op(5,9));
 
-int[] mas = { 1, 5, 2, 8, 6, 9, 3 };
-int Sum(int[] array, Predicate<int> func)
+//int[] mas = { 1, 5, 2, 8, 6, 9, 3 };
+//int Sum(int[] array, Predicate<int> func)
+//{
+//    int result = 0;
+//    foreach (int i in array)
+//        if (func(i)) result += i;
+//    return result;
+//}
+//Console.WriteLine(Sum(mas,x=>x%2==0));
+//Console.WriteLine(Sum(mas, x => x % 2 != 0));
+//Console.WriteLine(Sum(mas, x => x > 0));
+
+//delegate void Operation(int x, int y);
+//delegate void Message();
+//delegate void ShowMessage(string str);
+//delegate int IntOperation(int x, int y);
+
+//пример 8. Замыкания.
+//Action Outer()
+//{
+//    int x = 5;
+//    void Inner()
+//    {
+//        x++;
+//        Console.WriteLine(x);
+//    }
+//    return Inner;
+//}
+//var outerFn = () =>
+//{
+//    int x = 10;
+//    var innerFn = () => Console.WriteLine(++x);
+//    return innerFn;
+//};
+//var f = Outer();
+//f();
+//f();
+//f();
+//var fn = outerFn();
+//fn();
+//fn();
+//fn();
+//Func<int, int> fact = null!;
+//fact= (int x) => (x > 1) ? x * fact(x - 1) : 1;
+//Console.WriteLine(fact(5));
+//var mult = (int n) => (int m) => m * n;
+//var fmult = mult(5);
+//Console.WriteLine(fmult(3));
+//Console.WriteLine(fmult(4));
+//Console.WriteLine(fmult(6));
+
+//пример 9. События.
+Account account = new Account(100);
+account.Put(20);
+account.Take(70);
+account.Take(180);
+class Account
 {
-    int result = 0;
-    foreach (int i in array)
-        if (func(i)) result += i;
-    return result;
+    public delegate void AccountHandler(string mes);
+    public event AccountHandler? Notify;
+    public int Sum { get; private set; }
+    public Account(int sum) => Sum = sum;
+    public void Put(int sum) {
+        Sum += sum;
+        Notify?.Invoke($"На счет поступило:{sum}");
+    }
+    public void Take(int sum)
+    {
+        if (Sum >= sum)
+        {
+            Sum -= sum;
+            Notify?.Invoke($"Cо счета снято:{Sum}");
+        }
+        else
+        {
+            Notify?.Invoke($"Недостаточно средств. Баланc:{Sum}");
+        }
+    }
 }
-Console.WriteLine(Sum(mas,x=>x%2==0));
-Console.WriteLine(Sum(mas, x => x % 2 != 0));
-Console.WriteLine(Sum(mas, x => x > 0));
-
-delegate void Operation(int x, int y);
-delegate void Message();
-delegate void ShowMessage(string str);
-delegate int IntOperation(int x, int y);
-
-
-
