@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lesson22"
         mc:Ignorable="d"
-        Title="Hello WPF" Height="250" Width="250" Left="300" Top="200">
+        Title="Hello WPF" Height="250" Width="250" Left="300" Top="200"
+        Background="Azure" FontSize="18">
     <!--<Canvas Background="Bisque">
         <TextBox x:Name="textBoxMessage" Canvas.Left="65" TextWrapping="Wrap" 
                  Canvas.Top="39" Width="120"
@@ -52,11 +53,15 @@
                  x:Name="first"/>
         <TextBox Grid.Row="1" Grid.ColumnSpan="4" Margin="25 15"
           x:Name="second"/>
-        <Button Grid.Row="2" Grid.Column="0" Content="+" Margin="10"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="-" Margin="10"/>
-        <Button Grid.Row="2" Grid.Column="2" Content="*" Margin="10"/>
-        <Button Grid.Row="2" Grid.Column="3" Content="/" Margin="10"/>
-        <Label Grid.Row="3" Grid.ColumnSpan="4" x:Name="Result"
+        <Button Grid.Row="2" Grid.Column="0" Content="+" Margin="10" 
+                Click="Button_Click_1"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="-" Margin="10"
+                Click="Button_Click_1"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="*" Margin="10"
+                Click="Button_Click_1"/>
+        <Button Grid.Row="2" Grid.Column="3" Content="/" Margin="10"
+                Click="Button_Click_1"/>
+        <Label  Grid.Row="3" Grid.ColumnSpan="4" x:Name="Result"
                Margin="20 10"/>
     </Grid>
 </Window>
