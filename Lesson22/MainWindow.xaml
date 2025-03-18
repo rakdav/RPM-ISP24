@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Lesson22"
         mc:Ignorable="d"
         Title="Hello WPF" Height="250" Width="250" Left="300" Top="200"
-        Background="Azure" FontSize="18">
+        Background="Azure" FontSize="18" MinWidth="100" MaxWidth="500"
+        MinHeight="100" MaxHeight="500">
     <!--<Canvas Background="Bisque">
         <TextBox x:Name="textBoxMessage" Canvas.Left="65" TextWrapping="Wrap" 
                  Canvas.Top="39" Width="120"
