@@ -24,9 +24,33 @@
                    TextAlignment="Center"
                FontSize="30" TextWrapping="Wrap" Padding="100 1"
                    FontWeight="Bold"/>
-        <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Имя" Margin="50 20"/>
-        <TextBox Grid.Row="2" materialDesign:HintAssist.Hint="Фамилия" Margin="50 20"/>
-        <TextBox Grid.Row="3" materialDesign:HintAssist.Hint="Эл.почта" Margin="50 20"/>
+        <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Имя" Margin="50 20">
+            <TextBox.Text>
+                <Binding Path="Name">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox Grid.Row="2" materialDesign:HintAssist.Hint="Фамилия" Margin="50 20">
+            <TextBox.Text>
+                <Binding Path="SurName">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox Grid.Row="3" materialDesign:HintAssist.Hint="Эл.почта" Margin="50 20">
+            <TextBox.Text>
+                <Binding Path="Email">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <PasswordBox Grid.Row="4" materialDesign:HintAssist.Hint="Пароль" Margin="50 20"/>
         <Button Grid.Row="5" Foreground="White"
                 Background="Black" Margin="50 1" Content="Регистрация"/>
