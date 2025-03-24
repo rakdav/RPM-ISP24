@@ -20,14 +20,16 @@ namespace Lesson24.Model
                     case "Name":
                         {
                             if (Name == null) error = "Поле пустое";
-                            if (Name!.All(c => char.IsLetter(c) || c == ' '))
+                            else
+                            if (!Name!.All(c => char.IsLetter(c) || c == ' '))
                                 error = "Должны быть только буквы";
                         }
                         break;
                     case "SurName":
                         {
                             if (SurName == null) error = "Поле пустое";
-                            if (SurName!.All(c => char.IsLetter(c) || c == ' '))
+                            else
+                            if (!SurName!.All(c => char.IsLetter(c) || c == ' '))
                                 error = "Должны быть только буквы";
                         }
                         break;
@@ -35,6 +37,8 @@ namespace Lesson24.Model
                         {
                             string pattern = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
                 @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
+                            if (Email == null) error = "Поле пустое";
+                            else
                             if (!Regex.IsMatch(Email!, pattern, RegexOptions.IgnoreCase))
                                 error = "Неверный email";
                         }

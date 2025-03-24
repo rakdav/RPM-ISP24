@@ -28,7 +28,7 @@
             <TextBox.Text>
                 <Binding Path="Name">
                     <Binding.ValidationRules>
-                        <ExceptionValidationRule/>
+                        <DataErrorValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -37,7 +37,7 @@
             <TextBox.Text>
                 <Binding Path="SurName">
                     <Binding.ValidationRules>
-                        <ExceptionValidationRule/>
+                        <DataErrorValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -46,7 +46,7 @@
             <TextBox.Text>
                 <Binding Path="Email">
                     <Binding.ValidationRules>
-                        <ExceptionValidationRule/>
+                        <DataErrorValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
