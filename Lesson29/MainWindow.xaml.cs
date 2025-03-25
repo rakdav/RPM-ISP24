@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lesson27;
+namespace Lesson29;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
@@ -19,10 +19,5 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-    }
-
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-        grid.Resources["imBrush"] = Brushes.Blue;
     }
 }

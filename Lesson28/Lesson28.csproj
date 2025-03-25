@@ -8,12 +8,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Chrysanthemum.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Chrysanthemum.jpg" />
-  </ItemGroup>
-
 </Project>

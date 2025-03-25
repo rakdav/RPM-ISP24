@@ -7,16 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <LinearGradientBrush x:Key="lgBrush" StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="Blue" Offset="0"/>
-            <GradientStop Color="Green" Offset="0.5"/>
-            <GradientStop Color="Red" Offset="1"/>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="revlgBrush" StartPoint="1,1" EndPoint="0,0">
-            <GradientStop Color="LightSkyBlue" Offset="0"/>
-            <GradientStop Color="LightGreen" Offset="0.5"/>
-            <GradientStop Color="LightCoral" Offset="1"/>
-        </LinearGradientBrush>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MyDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Background="{StaticResource lgBrush}" Name="grid">
         <Grid.ColumnDefinitions>
@@ -24,7 +19,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.Resources>
-            <ImageBrush x:Key="imBrush" ImageSource="/Chrysanthemum.jpg"/>
+            <ImageBrush x:Key="imBrush" ImageSource="Chrysanthemum.jpg"/>
         </Grid.Resources>
         <Button Foreground="{StaticResource imBrush}"
                 Background="{StaticResource revlgBrush}"
