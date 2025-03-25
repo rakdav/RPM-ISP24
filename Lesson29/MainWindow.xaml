@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lesson29"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="Markup extension" Height="350" Width="525">
+    <StackPanel>
+        <TextBlock Text="{local:Sum X=10,Y=15}"/>
+        <TextBlock>
+            <TextBlock.Text>
+                <local:SumExtension X="3" Y="12"/>
+            </TextBlock.Text>
+        </TextBlock>
+        <TextBlock Text="{local:Sum 3}"/>
+    </StackPanel>
 </Window>
