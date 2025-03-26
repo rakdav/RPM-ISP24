@@ -16,7 +16,9 @@
             </Grid.RowDefinitions>
             <TextBox x:Name="TextBoxAddress" Margin="50 20" Grid.Row="0"/>
             <TextBox x:Name="TextBoxPort" Margin="50 20" Grid.Row="1"/>
-            <TextBlock x:Name="TextBlockResponse" Margin="10" Grid.Row="2"/>
+            <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                <TextBlock x:Name="TextBlockResponse" Margin="10" />
+            </ScrollViewer>
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
