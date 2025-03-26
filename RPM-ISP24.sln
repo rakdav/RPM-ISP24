@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson29", "Lesson29\Lesson
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson30", "Lesson30\Lesson30.csproj", "{01DEA3B3-E903-424F-8766-F57BA6CFBCF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson31(NS TCP-client socket)", "Lesson31(NS TCP-client socket)\Lesson31(NS TCP-client socket).csproj", "{A917D6E5-6330-41B4-9AEB-3E089BA0BE06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +227,10 @@ Global
 		{01DEA3B3-E903-424F-8766-F57BA6CFBCF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01DEA3B3-E903-424F-8766-F57BA6CFBCF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01DEA3B3-E903-424F-8766-F57BA6CFBCF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A917D6E5-6330-41B4-9AEB-3E089BA0BE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A917D6E5-6330-41B4-9AEB-3E089BA0BE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A917D6E5-6330-41B4-9AEB-3E089BA0BE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A917D6E5-6330-41B4-9AEB-3E089BA0BE06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
