@@ -22,34 +22,46 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-
-    private async Task Button_Click(object sender, RoutedEventArgs e)
+    private async Task<StringBuilder> Send(string strUrl,int p)
     {
-        var port = int.Parse(TextBoxPort.Text);
-        var url = TextBoxAddress.Text;
-        using var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream,
-            ProtocolType.Tcp);
-        try
-        {
-            await socket.ConnectAsync(url, port);
-            var message = $"GET / HTTP/1.1\r\nHost: {url}\r\n\r\n";
-            var messageBytes = Encoding.UTF8.GetBytes(message);
-            socket.Shutdown(SocketShutdown.Send);
-            var responseBytes = new byte[512];
-            var builder = new StringBuilder();
-            int bytes;
-            do
+            int port = p;
+            string url = strUrl;
+            using var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream,
+                ProtocolType.Tcp);
+            try
             {
-                bytes = await socket.ReceiveAsync(responseBytes);
-                string responsePart = Encoding.UTF8.GetString(responseBytes, 0, bytes);
-                builder.Append(responsePart);
+                await socket.ConnectAsync(url, port);
+                var message = $"GET / HTTP/1.1\r\nHost: {url}\r\nConnection: close\r\n\r\n";
+                var messageBytes = Encoding.UTF8.GetBytes(message);
+                await socket.SendAsync(messageBytes);
+                socket.Shutdown(SocketShutdown.Send);
+                var responseBytes = new byte[512];
+                var builder = new StringBuilder();
+                int bytes;
+                do
+                {
+                    bytes = await socket.ReceiveAsync(responseBytes);
+                    string responsePart = Encoding.UTF8.GetString(responseBytes, 0, bytes);
+                    builder.Append(responsePart);
+                }
+                while (bytes > 0);
+                return builder;
             }
-            while (bytes > 0);
-            TextBlockResponse.Text =builder.ToString();
-        }
-        catch(SocketException ex)
+            catch (SocketException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        return new StringBuilder("");
+    }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        string url = TextBoxAddress.Text;
+        int port = int.Parse(TextBoxPort.Text);
+        Dispatcher.Invoke(() =>
         {
-            MessageBox.Show(ex.Message);
-        }
+            Task<StringBuilder> task = Task.Run(() => Send(url,port));
+            TextBlockResponse.Text = task.Result.ToString();
+        });
     }
 }
