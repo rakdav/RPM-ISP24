@@ -11,7 +11,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="0.8*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Phones}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Phones}"
+                 SelectedItem="{Binding SelectedPhone}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
@@ -22,6 +23,16 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
+        <Grid Grid.Column="1" DataContext="{Binding SelectedPhone}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="{Binding Title,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Grid.Row="1" Text="{Binding Company,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Grid.Row="2" Text="{Binding Price,UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
     </Grid>
 </Window>

@@ -13,6 +13,16 @@ namespace Lesson37.ViewModel
 {
     public class MainViewModel:INotifyPropertyChanged
     {
+        private Phone selectedPhone;
+        public Phone SelectedPhone
+        {
+            get { return selectedPhone; }
+            set
+            {
+                selectedPhone = value;
+                OnPropertyChanged(nameof(SelectedPhone));
+            }
+        }
         public MainViewModel()
         {
             Phones = new ObservableCollection<Phone>
