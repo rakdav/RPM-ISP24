@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lesson37.Model
 {
-    class Phone : INotifyPropertyChanged
+    public class Phone : INotifyPropertyChanged
     {
         private string title;
         private string company;
