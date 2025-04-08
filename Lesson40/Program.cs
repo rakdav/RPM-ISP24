@@ -59,13 +59,45 @@ using System.Text;
 //SeekOrigin.Begin: начало файла
 //SeekOrigin.End: конец файла
 //SeekOrigin.Current: текущая позиция в файле
-using (FileStream fstream = new FileStream(@"myfile.txt", FileMode.OpenOrCreate))
-{
-    string replaceText = "house";
-    fstream.Seek(-5, SeekOrigin.End);
-    byte[] input = Encoding.Default.GetBytes(replaceText);
-    await fstream.WriteAsync(input, 0, input.Length);
+//using (FileStream fstream = new FileStream(@"myfile.txt", FileMode.OpenOrCreate))
+//{
+//    string replaceText = "house";
+//    fstream.Seek(-5, SeekOrigin.End);
+//    byte[] input = Encoding.Default.GetBytes(replaceText);
+//    await fstream.WriteAsync(input, 0, input.Length);
 
-    fstream.Seek(0, SeekOrigin.Begin);
-    byte[] output = new byte[fstream.Length];
- }
+//    fstream.Seek(0, SeekOrigin.Begin);
+//    byte[] output = new byte[fstream.Length];
+// }
+
+//Чтение и запись текстовых файлов. StreamReader и StreamWriter
+Console.Write("Введите название файла:");
+string path = Console.ReadLine()!;
+//Console.WriteLine("Введите текст:");
+//string text = Console.ReadLine()!;
+//using(StreamWriter writer=new StreamWriter(path, false))
+//{
+//    await writer.WriteLineAsync(text);
+//}
+//using (StreamWriter writer = new StreamWriter(path, true))
+//{
+//    await writer.WriteLineAsync("Additional");
+//    await writer.WriteLineAsync("4,8");
+//}
+
+//1
+//using (StreamReader reader=new StreamReader(path))
+//{
+//    string text = await reader.ReadToEndAsync();
+//    Console.WriteLine(text);
+//}
+
+//2. Считаем текст из файла построчно:
+using (StreamReader reader = new StreamReader(path))
+{
+    string? line;
+    while ((line = await reader.ReadLineAsync()) != null)
+    {
+        Console.WriteLine(line);
+    }
+}
