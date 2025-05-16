@@ -55,6 +55,20 @@ namespace Lab12_13.ViewModel
                   }));
             }
         }
+
+        private RelayCommand? deleteMoto;
+        public RelayCommand DeleteMoto
+        {
+            get
+            {
+                return deleteMoto ??
+                  (deleteMoto = new RelayCommand((o) =>
+                  {
+                      Motos.Remove(SelectedMoto!);
+                      Records = Motos.Count;
+                  }));
+            }
+        }
         private RelayCommand? doubleCommand;
         public RelayCommand DoubleCommand
         {
@@ -67,7 +81,8 @@ namespace Lab12_13.ViewModel
                       if (view.ShowDialog() == true)
                       {
                           ClassMoto moto = view.Moto;
-                          Motos.Add(moto);
+                          ClassMoto editMoto= Motos.FirstOrDefault(moto);
+                          editMoto = moto;
                       }
                       Records = Motos.Count;
                   }));

@@ -68,7 +68,11 @@
                                         CommandParameter="{Binding SelectedMoto}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-
+                            <ListBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Удалить" Command="{Binding DeleteMoto}"/>
+                                </ContextMenu>
+                            </ListBox.ContextMenu>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border CornerRadius="10" Background="Orange" Margin="5" Width="740">
