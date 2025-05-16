@@ -35,7 +35,7 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <ToolBar>
-                            <Button Command="{Binding OpenCommand}" x:Name="Open">
+                            <Button Command="{Binding OpenCommand}">
                                 <Image Source="/Images/open.jpeg"/>
                             </Button>
                             <Separator/>
@@ -55,7 +55,7 @@
                                 <MenuItem Header="Open..." Command="{Binding OpenCommand}"/>
                                 <MenuItem Header="Save..." Command="{Binding SaveCommand}"/>
                                 <Separator/>
-                                <MenuItem Header="Exit" />
+                                <MenuItem Header="Exit" Click="MenuItem_Click" />
                             </MenuItem>
                             <MenuItem Header="Edit"></MenuItem>
                         </Menu>
@@ -111,7 +111,39 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
-
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <ToolBar>
+                                <Button Command="{Binding OpenCommandBinary}">
+                                    <Image Source="/Images/open.jpeg"/>
+                                </Button>
+                                <Separator/>
+                                <Button Command="{Binding SaveCommandBinary}">
+                                    <Image Source="/Images/save.jpeg"/>
+                                </Button>
+                                <Separator/>
+                            </ToolBar>
+                            <ToolBar>
+                                <Button Command="{Binding AddCommandBinary}">
+                                    <Image Source="/Images/add.png"/>
+                                </Button>
+                            </ToolBar>
+                        </StackPanel>
+                        <Menu Height="25" VerticalAlignment="Top" Grid.Row="0">
+                            <MenuItem Header="File">
+                                <MenuItem Header="Open..." Command="{Binding OpenCommandBinary}"/>
+                                <MenuItem Header="Save..." Command="{Binding SaveCommandBinary}"/>
+                                <Separator/>
+                                <MenuItem Header="Exit" Click="MenuItem_Click" />
+                            </MenuItem>
+                            <MenuItem Header="Edit"></MenuItem>
+                        </Menu>
+                        
                     </Grid>
                 </TabItem.Content>
             </TabItem>
