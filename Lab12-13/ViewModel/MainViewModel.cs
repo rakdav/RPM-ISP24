@@ -12,6 +12,16 @@ namespace Lab12_13.ViewModel
 {
     public class MainViewModel: INotifyPropertyChanged
     {
+        private ClassMoto? selectedMoto;
+        public ClassMoto? SelectedMoto
+        {
+            get { return selectedMoto; }
+            set
+            {
+                selectedMoto = value;
+                OnPropertyChanged(nameof(SelectedMoto));
+            }
+        }
         public ObservableCollection<ClassMoto> Motos { get; set; }
         private int records;
         public int Records
@@ -36,6 +46,24 @@ namespace Lab12_13.ViewModel
                   (addCommand = new RelayCommand((o) =>
                   {
                       MotoView view = new MotoView(new ClassMoto());
+                      if (view.ShowDialog() == true)
+                      {
+                          ClassMoto moto = view.Moto;
+                          Motos.Add(moto);
+                      }
+                      Records = Motos.Count;
+                  }));
+            }
+        }
+        private RelayCommand? doubleCommand;
+        public RelayCommand DoubleCommand
+        {
+            get
+            {
+                return doubleCommand ??
+                  (doubleCommand = new RelayCommand((o) =>
+                  {
+                      MotoView view = new MotoView(SelectedMoto!);
                       if (view.ShowDialog() == true)
                       {
                           ClassMoto moto = view.Moto;

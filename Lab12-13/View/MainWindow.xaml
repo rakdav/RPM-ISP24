@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab12_13"
         xmlns:conv="clr-namespace:Lab12_13.Converters"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="Лабораторная работа 12,13" Height="450" Width="800"
         MaxHeight="450" MaxWidth="800">
@@ -58,7 +59,16 @@
                             </MenuItem>
                             <MenuItem Header="Edit"></MenuItem>
                         </Menu>
-                        <ListBox Grid.Row="2" ItemsSource="{Binding Motos}">
+                        <ListBox Grid.Row="2" ItemsSource="{Binding Motos}" 
+                                 SelectedItem="{Binding SelectedMoto}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction
+                                        Command="{Binding DoubleCommand}"
+                                        CommandParameter="{Binding SelectedMoto}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border CornerRadius="10" Background="Orange" Margin="5" Width="740">
