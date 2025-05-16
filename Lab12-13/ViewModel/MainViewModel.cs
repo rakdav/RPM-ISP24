@@ -3,15 +3,26 @@ using Lab12_13.Model;
 using Lab12_13.View;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Windows.Media;
 
 namespace Lab12_13.ViewModel
 {
-    public class MainViewModel
+    public class MainViewModel: INotifyPropertyChanged
     {
         public ObservableCollection<ClassMoto> Motos { get; set; }
-        
+        private int records;
+        public int Records
+        {
+            get { return records; }
+            set 
+            { 
+                records = value;
+                OnPropertyChanged(nameof(Records));
+            }
+        }
         public MainViewModel()
         {
             Motos = new ObservableCollection<ClassMoto>();
@@ -30,6 +41,7 @@ namespace Lab12_13.ViewModel
                           ClassMoto moto = view.Moto;
                           Motos.Add(moto);
                       }
+                      Records = Motos.Count;
                   }));
             }
         }
@@ -53,6 +65,19 @@ namespace Lab12_13.ViewModel
                               }
                           }
                       }
+                  }));
+            }
+        }
+        private RelayCommand? clearCommand;
+        public RelayCommand ClearCommand
+        {
+            get
+            {
+                return clearCommand ??
+                  (clearCommand = new RelayCommand((o) =>
+                  {
+                      Motos.Clear();
+                      Records = Motos.Count;
                   }));
             }
         }
@@ -84,10 +109,17 @@ namespace Lab12_13.ViewModel
                                   decimal.Parse(mas[6]));
                                   Motos.Add(moto);
                               }
+                              Records = Motos.Count;
                           }
                       }
                   }));
             }
+        }
+        public event PropertyChangedEventHandler? PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
