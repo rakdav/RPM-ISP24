@@ -111,6 +111,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson46(ns)", "Lesson46\Le
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson47(TCP Server Chat)", "Lesson47(TCP Server Chat)\Lesson47(TCP Server Chat).csproj", "{8116F8DF-CBEA-4AAD-AE9D-93D6947B9344}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson48(GameServer)", "Lesson48(GameServer)\Lesson48(GameServer).csproj", "{35B3F134-9BF0-451B-A33B-9B4A298C8DF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson48(GameClient)", "Lesson48(GameClient)\Lesson48(GameClient).csproj", "{74BFA03E-B372-48EF-8DD1-6CEF0E8EAEB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -333,6 +337,14 @@ Global
 		{8116F8DF-CBEA-4AAD-AE9D-93D6947B9344}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8116F8DF-CBEA-4AAD-AE9D-93D6947B9344}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8116F8DF-CBEA-4AAD-AE9D-93D6947B9344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B3F134-9BF0-451B-A33B-9B4A298C8DF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B3F134-9BF0-451B-A33B-9B4A298C8DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B3F134-9BF0-451B-A33B-9B4A298C8DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B3F134-9BF0-451B-A33B-9B4A298C8DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BFA03E-B372-48EF-8DD1-6CEF0E8EAEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BFA03E-B372-48EF-8DD1-6CEF0E8EAEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BFA03E-B372-48EF-8DD1-6CEF0E8EAEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BFA03E-B372-48EF-8DD1-6CEF0E8EAEB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
