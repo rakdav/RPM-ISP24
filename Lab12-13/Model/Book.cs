@@ -31,7 +31,7 @@ namespace Lab12_13.Model
         private Zhanr? bookZhanr;
         public Zhanr? BookZhanr
         {
-            get { return bookZhanr; }
+            get => bookZhanr;
             set
             {
                 bookZhanr = value;

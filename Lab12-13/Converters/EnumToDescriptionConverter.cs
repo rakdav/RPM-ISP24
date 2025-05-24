@@ -1,28 +1,29 @@
-﻿using System;
+﻿using Lab12_13.Model;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace Lab12_13.Converters
 {
-    public class MediaConverter : IValueConverter
+    public class EnumToDescriptionConverter : IValueConverter
     {
+        public IDictionary Dict { get; set; }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            TypeConverter cc = TypeDescriptor.GetConverter(typeof(Brush));
-            var result = (Brush)cc.ConvertFromString(value.ToString()!)!;
-            return result;
+            var key = value?.ToString();
+            return Dict.Contains(key) ? Dict[key] : null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+
+            return Dict.Cast<DictionaryEntry>().FirstOrDefault(p => p.Value == value).Key;
         }
     }
 }
