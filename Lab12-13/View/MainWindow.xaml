@@ -143,7 +143,20 @@
                             </MenuItem>
                             <MenuItem Header="Edit"></MenuItem>
                         </Menu>
-                        
+                        <ListView Grid.Row="2" ItemsSource="{Binding Zhanres}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Title}">Название</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Zhanr}" Width="100">Жанр</GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <StatusBar Grid.Row="3">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding StringFormat=Количество записей:{0},Path=RecordsBinary}"/>
+                                <Button Content="Очистить"  Command="{Binding ClearCommandBinary}" Margin="5 0"/>
+                            </StackPanel>
+                        </StatusBar>
                     </Grid>
                 </TabItem.Content>
             </TabItem>

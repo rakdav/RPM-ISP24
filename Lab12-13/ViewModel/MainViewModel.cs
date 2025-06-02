@@ -23,6 +23,7 @@ namespace Lab12_13.ViewModel
             }
         }
         public ObservableCollection<ClassMoto> Motos { get; set; }
+        public ObservableCollection<Book> Books { get; set; }
         private int records;
         public int Records
         {
@@ -55,7 +56,24 @@ namespace Lab12_13.ViewModel
                   }));
             }
         }
-
+        private RelayCommand? addCommandBinary;
+        public RelayCommand AddCommandBinary
+        {
+            get
+            {
+                return addCommandBinary ??
+                  (addCommandBinary = new RelayCommand((o) =>
+                  {
+                      ZhanrView view = new ZhanrView(new Book());
+                      if (view.ShowDialog() == true)
+                      {
+                          Book book = view.ThisBook;
+                          Books.Add(book);
+                      }
+                      //Records = Motos.Count;
+                  }));
+            }
+        }
         private RelayCommand? deleteMoto;
         public RelayCommand DeleteMoto
         {
